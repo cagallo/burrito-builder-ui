@@ -54,6 +54,31 @@ describe('Burrito Builder user flows', () => {
       .get('.order').last().contains('li', 'queso fresco')
   })
 
-  
+  it('should not be able to submit form if name field is empty', () => {
+    cy.get('.ingredient-buttons[name="sofritas"]').click()
+      .get('.submit-user-order-button').click()
+      .get('.order-container')
+      .get('.order').should('have.length', 1)
+  })
+
+  it('should not be able to submit form if no ingredients are added', () => {
+    cy.get('input[name="name"]').type('Chez')
+      .get('.submit-user-order-button').click()
+      .get('.order-container')
+      .get('.order').should('have.length', 1)
+  })
+
+  it('should be able to delete an order once it is picked up', () => {
+    cy.intercept('DELETE', 'http://localhost:3001/api/v1/orders/1', {
+      statusCode: 201
+    })
+    cy.intercept('http://localhost:3001/api/v1/orders', { fixture: 'emptyOrder.json'})
+    cy.get('.delete-button').click()
+      .get('.order-container').contains('p', 'No orders yet!')
+  })
+
+
+
+
 
 })
