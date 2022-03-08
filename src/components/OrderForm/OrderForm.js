@@ -14,7 +14,8 @@ class OrderForm extends Component {
   handleNameChange = e => this.setState({ name: e.target.value })
 
   handleIngredientChange = e => {
-    if (this.state.ingredients.includes(e.target.name)) { 
+    e.preventDefault()
+    if (!this.state.ingredients.includes(e.target.name)) { 
       const newIngredients = [...this.state.ingredients, e.target.name]
       this.setState({ingredients: newIngredients})
     }
@@ -23,7 +24,6 @@ class OrderForm extends Component {
   handleSubmit = async(e) => {
     e.preventDefault();
     const newOrder = {
-      id: this.props.orders.length + 1,
       name: this.state.name,
       ingredients: this.state.ingredients
     }
