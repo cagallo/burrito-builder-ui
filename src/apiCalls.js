@@ -17,8 +17,12 @@ export const apiCalls = {
   },
 
   async deleteOrder(id) {
-    let response = await fetch(`http://localhost:3001/api/v1/orders/${id}`, {method: 'DELETE'}) 
-      return await response.json()
+    try {
+      await fetch(`http://localhost:3001/api/v1/orders/${id}`, {method: 'DELETE'}) 
+    }
+    catch(error) {
+      console.log(error)
+    }
   }
 
 }
