@@ -14,7 +14,13 @@ export const apiCalls = {
         }
       })
       return await response.json();
-    }
+  },
+
+  async deleteOrder(id) {
+    let response = await fetch(`http://localhost:3001/api/v1/orders/${id}`, {method: 'DELETE'}) 
+      return await response.json()
+  }
+
 }
 
 export default apiCalls;
