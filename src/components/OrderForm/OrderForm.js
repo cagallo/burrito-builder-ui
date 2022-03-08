@@ -3,8 +3,7 @@ import { apiCalls } from '../../apiCalls'
 
 class OrderForm extends Component {
   constructor(props) {
-    super();
-    this.props = props;
+    super(props);
     this.state = {
       name: '',
       ingredients: []
@@ -23,11 +22,14 @@ class OrderForm extends Component {
 
   handleSubmit = async(e) => {
     e.preventDefault();
-    const newOrder = {
+    if (this.state.name && this.state.ingredients.length) {
+    const incomingOrder = {
       name: this.state.name,
       ingredients: this.state.ingredients
     }
-    await apiCalls.postOrder(newOrder)
+    await apiCalls.postOrder(incomingOrder)
+    this.props.addOrder(incomingOrder)
+    }
     this.clearInputs();
   }
 
