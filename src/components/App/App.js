@@ -26,15 +26,10 @@ class App extends Component {
   addOrder = userOrder => this.setState({orders: [...this.state.orders, userOrder]})
 
   deleteUserOrder = async(id) =>  {
-    // console.log(deleteIndex)
-    const currentOrders = [...this.state.orders]
-    console.log(currentOrders)
-    const deleteIndex = currentOrders.findIndex(order => order.id === id)
-    currentOrders.splice(deleteIndex, 1)
-    console.log(currentOrders.splice(deleteIndex, 1))
     try {
-      let data = await apiCalls.deleteOrder(id)
-      this.setState({ orders: data.orders })
+      await apiCalls.deleteOrder(id)
+      let orderData = await apiCalls.getOrders()
+      this.setState({ orders: orderData.orders })
     }
     catch(error) {
       this.setState({ error: error.message })
@@ -42,8 +37,8 @@ class App extends Component {
   }
 
   render() {
+    console.log('rendering')
     const orderInfo = this.state.orders.length > 0 && <Orders orders={this.state.orders} deleteUserOrder={this.deleteUserOrder} />
-    console.log(this.state.orders)
     return (
       <main className="App">
         <header>
