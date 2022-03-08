@@ -20,13 +20,14 @@ class OrderForm extends Component {
     }
   }
 
-  handleSubmit = e => {
+  handleSubmit = async(e) => {
     e.preventDefault();
     const newOrder = {
       id: this.props.orders.length + 1,
       name: this.state.name,
       ingredients: this.state.ingredients
     }
+    await apiCalls.postOrder(newOrder)
     this.clearInputs();
   }
 
