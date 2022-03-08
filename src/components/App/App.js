@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <main className="App">
         <header>
-          <h1>Burrito Builder</h1>
+          <h1 className='header'>Burrito Builder</h1>
           <OrderForm addOrder={this.addOrder} />
         </header>
         {orderInfo}
