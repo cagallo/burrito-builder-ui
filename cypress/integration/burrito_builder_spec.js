@@ -72,7 +72,7 @@ describe('Burrito Builder user flows', () => {
     cy.intercept('DELETE', 'http://localhost:3001/api/v1/orders/1', {
       statusCode: 201
     })
-    cy.intercept('http://localhost:3001/api/v1/orders', { fixture: 'emptyOrders.json' })
+    cy.intercept('http://localhost:3001/api/v1/orders', { fixture: 'emptyOrder.json' })
     cy.get('.delete-button').click()
   })
 })
