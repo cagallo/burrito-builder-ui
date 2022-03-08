@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('rendering')
     const orderInfo = this.state.orders.length > 0 && <Orders orders={this.state.orders} deleteUserOrder={this.deleteUserOrder} />
     return (
       <main className="App">

@@ -28,7 +28,6 @@ class OrderForm extends Component {
       ingredients: this.state.ingredients
     }
     let newOrder = await apiCalls.postOrder(incomingOrder)
-    console.log(newOrder)
     this.props.addOrder(newOrder)
     }
     this.clearInputs();

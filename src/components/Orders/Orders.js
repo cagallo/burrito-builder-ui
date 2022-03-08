@@ -5,7 +5,6 @@ const Orders = ( props ) => {
   if(!props.orders) {
     return ''
   }
-  console.log(props)
   const orderEls = props.orders.map(order => {
     return (
       <div className="order" id={order.id} key={order.id}>
