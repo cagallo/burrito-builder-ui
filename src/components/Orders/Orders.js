@@ -9,7 +9,7 @@ const Orders = props => {
         <ul className="ingredient-list">
           {order.ingredients.map(ingredient => {
             return <li>{ingredient}</li>
-          })}
+          })}``
         </ul>
       </div>
     )
