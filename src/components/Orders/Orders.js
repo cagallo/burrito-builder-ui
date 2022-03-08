@@ -5,11 +5,10 @@ const Orders = ( props ) => {
   if(!props.orders) {
     return ''
   }
-  console.log(typeof props.orders.orders)
-  const index = props.orders.index
+  console.log(props)
   const orderEls = props.orders.map(order => {
     return (
-      <div className="order" id={order.id} key={index}>
+      <div className="order" id={order.id} key={order.id}>
         <h3>{order.name}</h3>
         <ul className="ingredient-list">
           {order.ingredients.map(ingredient => {
