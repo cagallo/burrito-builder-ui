@@ -5,7 +5,7 @@ import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
 class App extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       orders: [],
@@ -15,8 +15,8 @@ class App extends Component {
 
   componentDidMount = async() => {
     try {
-      let orderInfo = await apiCalls.getorders();
-      this.setState({orders: orderInfo})
+      let orderInfo = await apiCalls.getOrders();
+      this.setState({orders: orderInfo.orders})
     }
     catch(error) {
       this.setState({error: error.message})
@@ -24,6 +24,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.orders)
     return (
       <main className="App">
         <header>
